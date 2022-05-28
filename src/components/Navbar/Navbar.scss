@@ -1,0 +1,9 @@
+.mobile-view-drawer-button {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-view-drawer-button {
+    display: inline-block;
+  }
+}

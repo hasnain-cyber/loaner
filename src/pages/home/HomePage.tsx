@@ -1,13 +1,32 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, useMediaQuery } from "@mui/material"
 import Navbar from "../../components/Navbar/Navbar";
+import { colors } from "../../theme";
+import FeatureCard from "./components/FeatureCard";
 import './HomePage.scss'
 
 const HomePage = () => {
+    const isDesktop = useMediaQuery("(min-width:600px)");
+
     return (
-        <Box>
-            <Navbar/>
-            <Typography>Home Page</Typography>
-        </Box>
+        <>
+            <Navbar />
+
+            {/* hero section */}
+            <Box display={'flex'} justifyContent={'space-between'} flexDirection={isDesktop ? 'row' : 'column-reverse'} padding={2} margin={2} borderRadius={4} bgcolor={colors.lightBlue}>
+                <Typography variant="h5" textAlign={isDesktop ? 'start' : 'center'}>Loans are not just about money, and we understand that.</Typography>
+                <img src="assets\hero.svg" alt="person doing a transaction" />
+            </Box>
+
+            {/* features */}
+            <Box display={'flex'} flexDirection={'column'} borderRadius={4} padding={2} margin={2} bgcolor={colors.lightBlue}>
+                <Typography variant="h6" textAlign={'center'} sx={{ textDecoration: 'underline' }}>WHY CHOOSE US</Typography>
+                <Box display={'flex'}>
+                    <FeatureCard title={'SECURITY'} imagePath={'assets/security.svg'} description={'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'} />
+                    <FeatureCard title={'OPTIONS'} imagePath={'assets/options.svg'} description={'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'} />
+                    <FeatureCard title={'NO PAPERWORK'} imagePath={'assets/no_paperwork.svg'} description={'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'} />
+                </Box>
+            </Box>
+        </>
     )
 }
 
