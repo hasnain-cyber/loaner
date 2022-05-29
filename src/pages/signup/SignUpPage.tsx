@@ -24,11 +24,12 @@ const SignUpPage = () => {
     const handleFormSubmit = (firstName: string, lastName: string, email: string, password: string) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const userId = userCredential.user.uid;
+                const uid = userCredential.user.uid;
                 const storagePushObject: StorageUserData = {
-                    userId,
+                    uid,
                     firstName,
                     lastName,
+                    email,
                 }
 
                 addDoc(collection(firestore, '/users'), storagePushObject).then(() => {

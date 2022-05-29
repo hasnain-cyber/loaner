@@ -4,6 +4,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import { useState } from "react";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import './Navbar.scss'
+import { getAuth } from "firebase/auth";
 
 type buildListItemProps = {
     linkPath: string,
@@ -26,7 +27,16 @@ const buildListItem = (props: buildListItemProps) => {
 
 const Navbar = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
+
     const navigate = useNavigate();
+    const auth = getAuth();
+
+    const handleSignOutClick = () => {
+        auth.signOut().then(() => {
+            navigate('/');
+        });
+        // handle catch later.
+    }
 
     return (
         <>
@@ -57,8 +67,8 @@ const Navbar = () => {
 
                     {/* rhs */}
                     <Box>
-                        <Button color="inherit">Login</Button>
-                        <Button color="inherit">Sign Up</Button>
+                        {auth.currentUser ? <Button color="inherit" onClick={handleSignOutClick}>Sign Out</Button> : <><Button color="inherit" href="/login">Log In</Button>
+                            <Button color="inherit" href="/signup">Sign Up</Button></>}
                     </Box>
                 </Toolbar>
             </AppBar>

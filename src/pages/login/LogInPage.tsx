@@ -1,10 +1,9 @@
 import {Box, Typography, Snackbar, Alert, Button, TextField,  } from "@mui/material"
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar"
-import { auth, firestore } from "../../firebaseConfig";
-import { StorageUserData } from "../../globalTypes";
+import { auth } from "../../firebaseConfig";
 import { colors } from "../../theme";
 
 const LogIn = () => {
@@ -13,6 +12,8 @@ const LogIn = () => {
     const [password, setPassword] = useState('');
     const [openErrorSnackbar, setOpenErrorSnackbar] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleErrorSnackBarClose = () => {
         setOpenErrorSnackbar(false);
     }
@@ -20,19 +21,7 @@ const LogIn = () => {
     const handleFormSubmit = (email: string, password: string) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const userId = userCredential.user.uid;
-
-                const usersRef = collection(firestore, 'users');
-                const q = query(usersRef, where('uid', '==', userId));
-                getDocs(q).then((snapshot) => {
-                    const requiredDocData: StorageUserData = snapshot.docs[0].data as unknown as StorageUserData;
-                    
-                })
-                    .catch((error) => {
-                        setOpenErrorSnackbar(true);
-                        console.log(error);
-                    });
-
+                navigate('/dashboard');
             })
             .catch((error) => {
                 setOpenErrorSnackbar(true);

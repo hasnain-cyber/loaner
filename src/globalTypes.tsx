@@ -1,5 +1,6 @@
 export type StorageUserData = {
-    userId: string,
+    uid: string,
     firstName: string,
-    lastName: string
+    lastName: string,
+    email: string,
 }
