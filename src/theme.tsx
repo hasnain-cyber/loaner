@@ -1,3 +1,4 @@
 export const colors = {
-    lightBlue: '#00FFFF',
+    lightBlue: '#42D0FF',
+    // #6C63FF
 }

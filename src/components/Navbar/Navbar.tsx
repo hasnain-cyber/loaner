@@ -40,7 +40,7 @@ const Navbar = () => {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="static" style={{ background: "#6C63FF" }}>
                 <Toolbar>
                     <Box className={'mobile-view-drawer-button'}>
                         <IconButton
@@ -60,7 +60,7 @@ const Navbar = () => {
                         flex: 1,
                         alignItems: 'center'
                     }}>
-                        <Typography variant="h6" textAlign={'center'} fontSize={25}>
+                        <Typography variant="h6" textAlign={'center'} fontSize={25} fontStyle={""}>
                             LOANER
                         </Typography>
                     </Link>
