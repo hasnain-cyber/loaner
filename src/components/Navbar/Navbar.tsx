@@ -40,7 +40,7 @@ const Navbar = () => {
 
     return (
         <>
-            <AppBar position="static" style={{ background: "#6C63FF" }}>
+            <AppBar position="fixed" style={{ background: "#6C63FF" }}>
                 <Toolbar>
                     <Box className={'mobile-view-drawer-button'}>
                         <IconButton

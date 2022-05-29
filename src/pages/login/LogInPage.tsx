@@ -1,10 +1,11 @@
-import {Box, Typography, Snackbar, Alert, Button, TextField,  } from "@mui/material"
+import { Box, Typography, Snackbar, Alert, Button, TextField, } from "@mui/material"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar"
 import { auth } from "../../firebaseConfig";
 import { colors } from "../../theme";
+import "./LogInPage.scss"
 
 const LogIn = () => {
 
@@ -32,14 +33,23 @@ const LogIn = () => {
     return (
         <>
             <Navbar />
-            <Box display={'flex'} justifyContent={'center'}>
+            <br /><br /><br />
+            <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={"center"} height={600}>
                 {/* form box */}
-                <Box display={'flex'} flexDirection={'column'} width={500} maxWidth={'100%'} margin={2} padding={2} borderRadius={4} bgcolor={colors.lightBlue} gap={3}>
-                    <Typography variant="h4" textAlign={'center'} sx={{textDecoration: 'underline'}}>Welcome!</Typography>
+                <Box display={'flex'} flexDirection={'column'} justifyContent={'space-evenly'} width={500} height={400} maxWidth={'100%'} margin={2} padding={5} borderRadius={4} bgcolor={colors.lightBlue} gap={3}>
+                    <Typography variant="h4" textAlign={'center'} fontWeight={'600'} color={'white'}>Welcome!</Typography>
                     <form onSubmit={() => handleFormSubmit(email, password)}>
                         <TextField variant="outlined" required label={'Email'} value={email} onChange={(event) => setEmail(event.target.value)} />
                         <TextField variant="outlined" required label={'Password'} value={password} onChange={(event) => setPassword(event.target.value)} />
-                        <Button onClick={() => handleFormSubmit(email, password)}>Submit</Button>
+                        <Button onClick={() => handleFormSubmit(email, password)}>
+                            <Typography
+                                variant='h6'
+                                color='#6C63FF'
+
+                            >
+                                Submit
+                            </Typography>
+                        </Button>
                     </form>
                 </Box>
             </Box>

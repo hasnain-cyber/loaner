@@ -12,6 +12,7 @@ const HomePage = () => {
             <Navbar />
 
             {/* hero section */}
+            <br /><br /><br />
             <Box
                 display={"flex"}
                 justifyContent={"space-between"}
