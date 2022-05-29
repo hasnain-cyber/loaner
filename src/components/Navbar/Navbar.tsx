@@ -60,7 +60,7 @@ const Navbar = () => {
                         flex: 1,
                         alignItems: 'center'
                     }}>
-                        <Typography variant="h6" textAlign={'center'} fontSize={25} fontStyle={""}>
+                        <Typography variant="h6" textAlign={'center'} fontSize={25}>
                             LOANER
                         </Typography>
                     </Link>
